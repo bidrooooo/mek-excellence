@@ -2,7 +2,11 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import{createRoot}from'react-dom/client';
 import{createClient}from'@supabase/supabase-js';
-import'./style.css';import'./admin.css';
+import'./style.css';
+import'./admin.css';
+
+import heroBanner from '../file_00000000a3688210ad35cff434db2714.png';
+import mekLogo from '../1d03d52709b8a1b620118841afb67b9e.jpeg';
 
 const supabase=createClient(import.meta.env.VITE_SUPABASE_URL,import.meta.env.VITE_SUPABASE_ANON_KEY);
 const marks=['CA','AL','MT','DK','GH','IS','NS','BS','FY','MN','AS','SH','QN','LX','AW'];
@@ -113,25 +117,39 @@ function App(){
 
  return <div className="app-shell">
   <header className="topbar">
-   <div className="brand"><div className="brand-mark"><span>م</span><i>خ</i></div><div><strong>مصر الخير</strong><small>إدارة التطوع</small></div></div>
+   <div className="brand">
+    <img
+     src={mekLogo}
+     alt="مصر الخير - إدارة التطوع"
+     className="brand-mark"
+     style={{width:68,height:68,objectFit:'contain',background:'transparent',borderRadius:0}}
+    />
+    <div><strong>مصر الخير</strong><small>إدارة التطوع</small></div>
+   </div>
    <div className="top-actions"><span className="season">موسم التميز 2026</span><button className="admin-btn" onClick={()=>{setAdminOpen(true);setAdminError('');}}>{adminUser?'لوحة الإدارة':'دخول الإدارة'} <b>↗</b></button></div>
   </header>
 
   <main>
-   <section className="hero">
-    <div className="hero-pattern"></div>
-    <div className="hero-copy">
-     <div className="eyebrow"><span></span> التنافس يصنع الأثر</div>
-     <h1>كأس <em>التميز</em></h1>
-     <p>كل إنجاز بيصنع فرق… وكل مكتب ليه بصمته.</p>
-     <div className="hero-meta"><span>{loading?'جارٍ تحميل البيانات...':offices.length+' مكتبًا مشاركًا'}</span><span className="dot">•</span><span>منافسة واحدة، وأثر أكبر</span></div>
-    </div>
-    <div className="trophy-art" aria-hidden="true">
-     <div className="orbit orbit-one"></div><div className="orbit orbit-two"></div>
-     <div className="cup"><div className="cup-hand left"></div><div className="cup-hand right"></div><div className="cup-bowl">✦</div><div className="cup-stem"></div><div className="cup-base"></div></div>
-     <div className="spark s1">✦</div><div className="spark s2">✧</div><div className="spark s3">✦</div>
-    </div>
-    <div className="hero-bottom"><span>EXCELLENCE CUP</span><span>2026</span></div>
+   <section
+    className="hero"
+    style={{
+     padding:0,
+     overflow:'hidden',
+     background:'none',
+     minHeight:'auto',
+     borderRadius:24
+    }}
+   >
+    <img
+     src={heroBanner}
+     alt="كأس التميز - مكاتب مؤسسة مصر الخير التطوعية"
+     style={{
+      display:'block',
+      width:'100%',
+      height:'auto',
+      objectFit:'cover'
+     }}
+    />
    </section>
 
    <section className="stats-grid">
